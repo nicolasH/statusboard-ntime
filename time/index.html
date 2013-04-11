@@ -13,6 +13,7 @@
   <div id="form" style="display:none">
     <p>This page will show a text and the time with an UTC offset, based on the URL parameters (no DST adjustment whatsoever). Weird timezones with minutes offset are supported.</p>
     <p> For example you can see the time in <a href="?Dili&540">Dili, Timor Leste</a> (hit the back button or clear the url parameters to see this form).</p>
+    <p> Caveats: the panic browser does not like '.' or weird UTF8 characters, even properly escaped. 
     <table>
       <tr>
         <td>Name </td>
@@ -26,11 +27,11 @@
         <td colspan="2"><center><input type="button" value="Get URL" onclick="setupShowTime();"></center></td>
       </tr>
     </table>
-
+    <br><br>
     <div class="nav" align="right">
       by <a href="http://www.niconomicon.net">@nico_h</a> on 
       <a href="https://alpha.app.net/nico_h">app.net</a> & <a href="https://twitter.com/nico_h">twitter</a><br>          
-      <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">&copy; Nicolas Hoibian (by-nc-sa)</a> 2013<br>
+      <a href="https://github.com/nicolasH/status-board">source</a> is <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">&copy; Nicolas Hoibian (by-nc-sa)</a> 2013<br>
     </div>
 
   </div>
