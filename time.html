@@ -1,0 +1,112 @@
+<!DOCTYPE="HTML">
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+  <div class="center">
+  <div id="location"></div> 
+  <div id="time"></div>
+  <span id="debug"</span>
+  </div>
+  <div id="form" style="display:none">
+    <p>This page will show a text and the time with an UTC offset, based on the URL parameters.</p>
+    <p> For example you can see the time in <a href="?Dili&540">Dili, Timor Leste</a> (hit the back button or clear the url parameters to see this form).</p>
+    <table>
+      <tr>
+        <td>Name </td>
+        <td><input id="location_name" type="text" placeholder="Qaanaaq"></input></td>
+      </tr>
+      <tr>
+        <td>Timezone offset</td>
+        <td><input id="location_offset" type="text" placeholder="-04:00"></input></td>
+      </tr>
+      <tr>
+        <td colspan="2"><center><input type="button" value="Get URL" onclick="setupShowTime();"></center></td>
+
+      </tr>
+
+    </table>
+    
+    
+    
+  </div>
+  <script>
+    var url = window.location.toString();  
+    var start = url.lastIndexOf("?");
+    if(start==-1){
+        document.getElementById("form").style.display='block';
+    }
+    function setupShowTime(){
+        var name = document.getElementById("location_name").value;
+        var offset = document.getElementById("location_offset").value;
+        name = encodeURIComponent(name);
+        if (name=="" || offset == ""){
+            alert("Please give a name and a timezone in the [-]01:00 format.");
+            return;
+        }
+        offset = offset.split(":");
+        offset = parseInt(offset[0],10) * 60 + parseInt(offset[1],10);
+        if(isNaN(offset)){
+            alert("Please give a timezone offset in the [-]01:00 format.");
+            return;
+        }
+        window.location = "?" + name + "&" + offset;
+    }
+    function showTime(){
+        var url = window.location.toString();  
+        var start = url.lastIndexOf("?");
+        var debug = document.getElementById("debug");
+        var location = document.getElementById("location");
+        var element = document.getElementById("time");
+        var extra_off = 0;
+        var city_name = "UTC";
+        if(start>0){
+            var params = url.substr(start+1).split("&");
+            extra_off = parseInt(params[1]);
+            city_name = decodeURIComponent(params[0]);
+        }
+        var local = new Date();
+        var off = local.getTimezoneOffset();
+        var now = new Date();
+        var h = local.getHours() + Math.floor(off/60);
+        var m = local.getMinutes() + off%60;
+        if (extra_off!=0){
+            h = h + Math.floor(extra_off/60);
+            m = m + extra_off%60;
+        }
+        //debug.innerHTML = " [h<0:"+h+"]";
+        if (h < 0){
+            h += 24;
+        }
+        //debug.innerHTML += " [h>24:"+h+"]";
+        if (h >=24){
+            h = h % 24;
+        }
+        var s = local.getSeconds();
+        if (h<10){h = "0"+h;}
+        if (m<10){m = "0"+m;}
+        if (s<10){s = "0"+s;}
+        //debug.innerHTML = "utc: "+h +":"+m + ":"+s+"(off = "+off+", extra_off:"+extra_off+")";
+        location.innerHTML=city_name;
+        element.innerHTML= h+":"+m;
+        
+        setTimeout("showTime()",999);
+       
+        //debug.innerHTML="Current tz offset="+local.getTimezoneOffset();
+    }
+    window.onload=showTime();
+    
+</script>
+<script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+	var pageTracker = _gat._getTracker("UA-3650019-1");
+	pageTracker._initData();
+	pageTracker._trackPageview();
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+/* @override 
+	http://127.0.0.1/~niko/status_board/index.css */
+
+html{
+	font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
+}
+.main{
+	text-align: right;
+}
+#location{
+	height: 64px;
+	/*max-width: 134px;*/
+	/*overflow: hidden;*/
+	float: left;
+	font-size: 2.4em;
+	line-height: 1.25em;
+	/*color: rgb(174,183,188);*/
+	color: #7e7e7e;
+	
+	vertical-align: baseline;
+}
+#time{
+	max-height: 64px;
+	text-align: right;
+	font-size: 3em;
+	color: #eee;
+}
