@@ -71,6 +71,14 @@
             h = h + Math.floor(extra_off/60);
             m = m + extra_off%60;
         }
+        if(m>=60){
+           h += 1;
+           m -= 60;
+        }
+        if(m<0){
+          h -= 1;
+          m += 60;
+        }
         //debug.innerHTML = " [h<0:"+h+"]";
         if (h < 0){
             h += 24;
