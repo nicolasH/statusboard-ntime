@@ -1,5 +1,7 @@
 /* @override 
-	http://127.0.0.1/~niko/status-board/index.css */
+	http://127.0.0.1/~niko/status-board/time/index.css
+	http://192.168.1.103/~niko/status-board/time/index.css 
+*/
 
 html{
 	font-family: "Lucida Grande", Lucida, Verdana, sans-serif;
@@ -21,7 +23,16 @@ html{
 	font-size: 3em;
 	color: #eee;
 }
+#link {
+text-align: center;
+	margin: 0 auto;
+	margin-top: 100px;
+}
+a{
+	color: black;
+}
 #form{
+	margin: 0 auto;
 	width: 540px;
 	padding: 20px;
 }

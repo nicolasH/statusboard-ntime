@@ -9,23 +9,24 @@
   <div class="center">
   <div id="location"></div> 
   <div id="time"></div>
-  <span id="debug"</span>
+  <div id="link"><a href="" id="in-app-link">Open in Status Board</a></div>
+  <span id="debug"></span>
   </div>
   <div id="form" style="display:none">
     <p>This page will show a text and the time with an UTC offset, based on the URL parameters (no DST adjustment whatsoever). Weird timezones with minutes offset are supported.</p>
     <p> For example you can see the time in <a href="?Dili&540">Dili, Timor Leste</a> (hit the back button or clear the url parameters to see this form).</p>
-    <p> Caveats: the panic browser does not like '.' or weird UTF8 characters, even properly escaped. 
+    <p> Caveats: the panic browser does not like '.' in the url.</p>
     <table>
       <tr>
         <td>Name </td>
         <td><input id="location_name" type="text" placeholder="Qaanaaq"></input></td>
       </tr>
       <tr>
-        <td>Timezone offset</td>
+        <td>GMT/UTC offset</td>
         <td><input id="location_offset" type="text" placeholder="-04:00"></input></td>
       </tr>
       <tr>
-        <td colspan="2"><center><input type="button" value="Get URL" onclick="setupShowTime();"></center></td>
+        <td></td><td><center><input type="button" value="Preview" onclick="setupShowTime();"></center></td>
       </tr>
     </table>
     <br><br>
@@ -42,6 +43,9 @@
     //document.getElementById("debug").innerHTML="["+start+"]:("+url+")";
     if(start==-1){
         document.getElementById("form").style.display='block';
+    }else{
+        var panicboard_add_url = "panicboard://?panel=diy&sourceDisplayName=niconomicon&url="+encodeURIComponent(document.location.toString());
+        document.getElementById("in-app-link").href=panicboard_add_url;
     }
     function setupShowTime(){
         var name = document.getElementById("location_name").value;
@@ -59,6 +63,8 @@
         }
         window.location = "?" + name + "&" + offset;
     }
+
+    
     function showTime(){
         var url = window.location.toString();
         var start = url.lastIndexOf("?");
