@@ -4,7 +4,7 @@ Script(s) for the Panic [Status Board](http://www.panic.com/statusboard/) App
 
 _nTime_: A simple widget for showing the time for given GMT offset in a compact fashion.
 
-Hosted at [www.niconomicon.net/status-board/nTime/](www.niconomicon.net/status-board/nTime/) ([source](https://github.com/nicolasH/status-board)).
+Hosted at [www.niconomicon.net/status-board/nTime/](http://www.niconomicon.net/status-board/nTime/) ([source](https://github.com/nicolasH/status-board)).
 
 Examples:
 
