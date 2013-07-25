@@ -9,7 +9,7 @@ url = "https://developer.apple.com/support/system-status/"
 path_all = 'current/all.html'
 path = 'current/'
 
-server_url = "http://192.168.1.103/~niko/status/"
+server_url = "http://niconomicon.net/statusboard-ntime/appleDev/"
 max_delta = timedelta(minutes=5)
 
 # def should_update():
