@@ -1,3 +1,8 @@
+#!/usr/local/bin/python
+print "Content-Type: text/html\n"
+print # blank line required to denote end of header
+
+
 import bs4
 import requests
 from traceback import print_exc
@@ -61,5 +66,5 @@ def parse_and_update_table(page_text):
 
 
 if __name__ == '__main__':
-    #with_date()
+    print ""
     refresh_data()
