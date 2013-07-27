@@ -1,4 +1,7 @@
 #!/usr/local/bin/python
+print "Content-Type: text/html\n"
+print ""# blank line required to denote end of header
+
 import json
 import my_html
 
@@ -12,8 +15,6 @@ path_json = 'current/current.json'
 
 
 def print_form_page():
-    print "Content-Type: text/html\n"
-    print ""# blank line required to denote end of header
     print "<html><head><title></title></head><body>"
     json_file = open(path_json,'rb')
     status = json.load(json_file)
@@ -32,7 +33,6 @@ def print_form_page():
     print "</body></html>"
 
 
-args = "06=on&08=on&12=on"
 form = cgi.FieldStorage()
 
 if len(form)>0:
@@ -48,7 +48,7 @@ if len(form)>0:
     for k in keys:
         if k[:2] in args:
             value = status[k]
-            print my_html.to_simple_row(k[3:], value)
+            print my_html.to_simple_row(k[3:], "current/"+value)
     print "</table>"
 
 else:
