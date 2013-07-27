@@ -5,6 +5,7 @@ print # blank line required to denote end of header
 import bs4
 import urllib2
 from traceback import print_exception
+import sys
 url = "https://developer.apple.com/support/system-status/"
 path_all = 'current/all.html'
 path = 'current/'
