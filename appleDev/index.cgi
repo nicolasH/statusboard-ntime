@@ -36,7 +36,6 @@ def print_form_page():
 form = cgi.FieldStorage()
 
 if len(form)>0:
-    print form
     args = form.keys()
     print args
     json_file = open(path_json,'rb')
