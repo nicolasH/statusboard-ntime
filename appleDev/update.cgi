@@ -2,36 +2,23 @@
 print "Content-Type: text/html\n"
 print # blank line required to denote end of header
 
-
 import bs4
-import requests
-from traceback import print_exc
-import json
-from datetime import datetime
-import os.path, time
-from datetime import timedelta
+import urllib2
+from traceback import print_exception
 url = "https://developer.apple.com/support/system-status/"
 path_all = 'current/all.html'
 path = 'current/'
 
 server_url = "http://niconomicon.net/statusboard-ntime/appleDev/"
-max_delta = timedelta(minutes=5)
-
-# def should_update():
-#     now = datetime.now()
-#     then = os.path.getmtime(path)
-#     then = datetime.fromtimestamp(then)
-#     should_update = now - then > max_delta
-#     print "last modified: %s should update: %s " % (then, str(should_update))
-#     return should_update
 
 def refresh_data():
     try:
-        result = requests.get(url)
-        if result.status_code == 200:
-            parse_and_update_table(result.content)
+        result = urllib2.urlopen(url)
+        print "fetched the data"
+        if result.getcode() == 200:
+            parse_and_update_table(result.read())
     except Exception:
-        print_exc()
+        print_exception(sys.exc_type, sys.exc_value, sys.exc_traceback, limit, sys.stdout)
         pass
 
 def to_row(name, status):
@@ -64,7 +51,6 @@ def parse_and_update_table(page_text):
     f.write("</table>")
     f.close()
 
-
-if __name__ == '__main__':
-    print ""
-    refresh_data()
+print "refreshing"
+refresh_data()
+print "done"
