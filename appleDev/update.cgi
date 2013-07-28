@@ -46,7 +46,7 @@ def parse_and_update_tables(page_text):
         f.write(my_html.to_simple_row(key[3:], value))
         f.write("</table>")
         f.close()
-        print my_html.panic_link(server_url, single, name)
+        #print my_html.panic_link(server_url, single, name)
         #"""<a href="panicboard://?panel=table&sourceDisplayName=niconomicon&url=%s">%s</a>""" % (server_url + single, name)
         n +=1
 
@@ -88,6 +88,6 @@ def parse_and_update_tables(page_text):
     json.dump(status,f)
     f.close()
 
-print "refreshing"
+print "refreshing..."
 refresh_data()
 print "done"
