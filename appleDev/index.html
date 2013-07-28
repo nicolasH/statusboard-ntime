@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Status Board snippet(s)</title>
+        <title>Status Board widget for Apple Developer portal System Status</title>
         <link rel="stylesheet" media="all" href="/index.css" />
     </head>
     <body>
@@ -8,35 +8,42 @@
         <div id="blog">
             <br/>
             <div class="post">
-                <div class="title">Apple Developer Systems Status Widget</div>
+                <div class="title">Status Board widget for Apple Developer portal System Status</div>
                 <div class="content">
-    <p>This was made after the Apple Developer Center and related sites were taken offline for maintenance after an intrusion. It allows you to see the status of the different sub-system <a href="https://developer.apple.com/support/system-status/">published by Apple</a> in a <a href="http://panic.com/statusboard/">Panic's Status Board</a> "table" widget.</p>
-    <p>The form bellow allow you to select which parts of the system you want to see in your widget. Click on "Status Board Table" to add the table with the status of the selected sub-systems to your Status Board app.</p>
-    <p>The 3 links bellow the form will also open in statusboard with their respective information.</p>
+    <p>This was made after the Apple Developer portal and related sites were taken offline for maintenance after an intrusion. It allows you to see the status of the different sub-system <a href="https://developer.apple.com/support/system-status/">published by Apple</a> in a <a href="http://panic.com/statusboard/">Panic's Status Board</a> "table" widget.</p>
+    
+<p>The 3 links bellow will open in StatusBoard with their respective information.</p>
+<p>
+<a href="panicboard://?panel=table&sourceDisplayName=niconomicon&url=http://niconomicon.net/statusboard-ntime/appleDev/current/all.html">Everything</a> &mdash; 
+<a href="panicboard://?panel=table&sourceDisplayName=niconomicon&url=http://niconomicon.net/statusboard-ntime/appleDev/current/imgs.html">Everything as images</a> &mdash; 
+<a href="panicboard://?panel=table&sourceDisplayName=niconomicon&url=http://niconomicon.net/statusboard-ntime/appleDev/current/down.html">Offline only</a>
+</p>
+
+    <p>This form allows you to select which sub-systems you want to see in your widget. Click on "Status Board Table" to add the table with their status to your Status Board app.</p>
+<form action="index.cgi">
+<input type="checkbox" name="00" id="00"></input><label for="00">Certificates, Identifiers & Profiles</label><br>
+<input type="checkbox" name="01" id="01"></input><label for="01">Member Center</label><br>
+<input type="checkbox" name="02" id="02"></input><label for="02">iTunes Connect</label><br>
+<input type="checkbox" name="03" id="03"></input><label for="03">Xcode Automatic Configuration</label><br>
+<input type="checkbox" name="04" id="04"></input><label for="04">iOS Dev Center</label><br>
+<input type="checkbox" name="05" id="05"></input><label for="05">Program Enrollment and Renewals</label><br>
+<input type="checkbox" name="06" id="06"></input><label for="06">Pre-Release Documentation</label><br>
+<input type="checkbox" name="07" id="07"></input><label for="07">Mac Dev Center</label><br>
+<input type="checkbox" name="08" id="08"></input><label for="08">Apple Developer Forums</label><br>
+<input type="checkbox" name="09" id="09"></input><label for="09">Software Downloads</label><br>
+<input type="checkbox" name="10" id="10"></input><label for="10">Safari Dev Center</label><br>
+<input type="checkbox" name="11" id="11"></input><label for="11">Bug Reporter</label><br>
+<input type="checkbox" name="12" id="12"></input><label for="12">Videos</label><br>
+<input type="checkbox" name="13" id="13"></input><label for="13">App Store Resource Center</label><br>
+<input type="checkbox" name="14" id="14"></input><label for="14">Technical Support</label><br>
+<br>
+
+<input type="button" onclick="panic_table()" value="Status Board Table"></form>
+</form>
+
     <p>The Status Board table widget minimum dimension is 4 x 4 so you might want to choose at least 4 sub-systems to monitor.</p>
     <p>The data is read from <a href="https://developer.apple.com/support/system-status/">Apple server's</a> every 5 minutes</p>
     
-<form action="index.cgi">
-<input type="checkbox" class="checkbox" name="00">Certificates, Identifiers & Profiles</input><br>
-<input type="checkbox" class="checkbox" name="01">Member Center</input><br>
-<input type="checkbox" class="checkbox" name="02">iTunes Connect</input><br>
-<input type="checkbox" class="checkbox" name="03">Xcode Automatic Configuration</input><br>
-<input type="checkbox" class="checkbox" name="04">iOS Dev Center</input><br>
-<input type="checkbox" class="checkbox" name="05">Program Enrollment and Renewals</input><br>
-<input type="checkbox" class="checkbox" name="06">Pre-Release Documentation</input><br>
-<input type="checkbox" class="checkbox" name="07">Mac Dev Center</input><br>
-<input type="checkbox" class="checkbox" name="08">Apple Developer Forums</input><br>
-<input type="checkbox" class="checkbox" name="09">Software Downloads</input><br>
-<input type="checkbox" class="checkbox" name="10">Safari Dev Center</input><br>
-<input type="checkbox" class="checkbox" name="11">Bug Reporter</input><br>
-<input type="checkbox" class="checkbox" name="12">Videos</input><br>
-<input type="checkbox" class="checkbox" name="13">App Store Resource Center</input><br>
-<input type="checkbox" class="checkbox" name="14">Technical Support</input><br>
-<input type="button" onclick="panic_table()" value="Status Board Table"></form>
-</form>
-<a href="panicboard://?panel=table&sourceDisplayName=niconomicon&url=http://niconomicon.net/statusboard-ntime/appleDev/current/all.html">Everything</a><br>
-<a href="panicboard://?panel=table&sourceDisplayName=niconomicon&url=http://niconomicon.net/statusboard-ntime/appleDev/current/imgs.html">Everything as images</a> ( in the same order as on the original page)<br>
-<a href="panicboard://?panel=table&sourceDisplayName=niconomicon&url=http://niconomicon.net/statusboard-ntime/appleDev/current/down.html">Only Down</a><br>
 
                 </div>
             </div>

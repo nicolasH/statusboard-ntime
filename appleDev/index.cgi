@@ -18,7 +18,7 @@ def print_form_page():
     print """
 <html>
     <head>
-        <title>Status Board snippet(s)</title>
+        <title>Status Board widget for Apple Developer portal System Status</title>
         <link rel="stylesheet" media="all" href="/index.css" />
     </head>
     <body>
@@ -26,14 +26,19 @@ def print_form_page():
         <div id="blog">
             <br/>
             <div class="post">
-                <div class="title">Apple Developer Systems Status Widget</div>
+                <div class="title">Status Board widget for Apple Developer portal System Status</div>
                 <div class="content">
-    <p>This was made after the Apple Developer Center and related sites were taken offline for maintenance after an intrusion. It allows you to see the status of the different sub-system <a href="https://developer.apple.com/support/system-status/">published by Apple</a> in a <a href="http://panic.com/statusboard/">Panic's Status Board</a> "table" widget.</p>
-    <p>The form bellow allow you to select which parts of the system you want to see in your widget. Click on "Status Board Table" to add the table with the status of the selected sub-systems to your Status Board app.</p>
-    <p>The 3 links bellow the form will also open in statusboard with their respective information.</p>
-    <p>The Status Board table widget minimum dimension is 4 x 4 so you might want to choose at least 4 sub-systems to monitor.</p>
-    <p>The data is read from <a href="https://developer.apple.com/support/system-status/">Apple server's</a> every 5 minutes</p>
+    <p>This was made after the Apple Developer portal and related sites were taken offline for maintenance after an intrusion. It allows you to see the status of the different sub-system <a href="https://developer.apple.com/support/system-status/">published by Apple</a> in a <a href="http://panic.com/statusboard/">Panic's Status Board</a> "table" widget.</p>
     """
+    print """<p>The 3 links bellow will open in StatusBoard with their respective information.</p>"""
+    print "<p>"
+    print my_html.panic_link(server_url,"current/all.html","Everything")+" &mdash; "
+    print my_html.panic_link(server_url,"current/imgs.html","Everything as images") +" &mdash; "
+    print my_html.panic_link(server_url,"current/down.html","Offline only")
+    print "</p>"
+
+    print """
+    <p>This form allows you to select which sub-systems you want to see in your widget. Click on "Status Board Table" to add the table with their status to your Status Board app.</p>"""
     json_file = open(path_json,'rb')
     status = json.load(json_file)
     #print status
@@ -41,13 +46,16 @@ def print_form_page():
 
     print """<form action="index.cgi">"""
     for key in keys:
-        print """<input type="checkbox" class="checkbox" name="%s">%s</input><br>""" % (key[:2],key[3:])
+        print """<input type="checkbox" name="%s" id="%s"></input><label for="%s">%s</label><br>""" % (key[:2],key[:2],key[:2],key[3:])
 
+    print "<br>\n"
     print """<input type="button" onclick="panic_table()" value="Status Board Table"></form>"""
     print "</form>"
-    print my_html.panic_link(server_url,"current/all.html","Everything")+"<br>"
-    print my_html.panic_link(server_url,"current/imgs.html","Everything as images") +" ( in the same order as on the original page)<br>"
-    print my_html.panic_link(server_url,"current/down.html","Only Down")+"<br>"
+    print """
+    <p>The Status Board table widget minimum dimension is 4 x 4 so you might want to choose at least 4 sub-systems to monitor.</p>
+    <p>The data is read from <a href="https://developer.apple.com/support/system-status/">Apple server's</a> every 5 minutes</p>
+    """
+
     print """
                 </div>
             </div>
