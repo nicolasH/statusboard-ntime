@@ -28,8 +28,10 @@ def print_form_page():
             <div class="post">
                 <div class="title">Apple Developer Systems Status Widget</div>
                 <div class="content">
-    <p>The list bellow allow you to select which parts of the system you want to see on your statusboard widget.</p>
-    <p>The Statusboard widget minimum dimension is 4 x 4 so you might want to choose at least 4 systems to monitor.</p>
+    <p>This was made after the Apple Developer Center and related sites were taken offline for maintenance after an intrusion. It allows you to see the status of the different sub-system <a href="https://developer.apple.com/support/system-status/">published by Apple</a> in a <a href="http://panic.com/statusboard/">Panic's Status Board</a> "table" widget.</p>
+    <p>The form bellow allow you to select which parts of the system you want to see in your widget. Click on "Status Board Table" to add the table with the status of the selected sub-systems to your Status Board app.</p>
+    <p>The 3 links bellow the form will also open in statusboard with their respective information.</p>
+    <p>The Status Board table widget minimum dimension is 4 x 4 so you might want to choose at least 4 sub-systems to monitor.</p>
     <p>The data is read from <a href="https://developer.apple.com/support/system-status/">Apple server's</a> every 5 minutes</p>
     """
     json_file = open(path_json,'rb')
@@ -41,10 +43,10 @@ def print_form_page():
     for key in keys:
         print """<input type="checkbox" class="checkbox" name="%s">%s</input><br>""" % (key[:2],key[3:])
 
-    print """<input type="button" onclick="panic_table()" value="Panic Table"></form>"""
+    print """<input type="button" onclick="panic_table()" value="Status Board Table"></form>"""
     print "</form>"
     print my_html.panic_link(server_url,"current/all.html","Everything")+"<br>"
-    print my_html.panic_link(server_url,"current/imgs.html","Everything as images") +"<br>"
+    print my_html.panic_link(server_url,"current/imgs.html","Everything as images") +" ( in the same order as on the original page)<br>"
     print my_html.panic_link(server_url,"current/down.html","Only Down")+"<br>"
     print """
                 </div>
@@ -75,22 +77,21 @@ def print_form_page():
             }
         }
         target_url = "panicboard://?panel=table&sourceDisplayName=niconomicon&url=";
-        target_url += server_url + complements
-        alert(target_url);
+        target_url += encodeURIComponent(server_url + complements);
         document.location = target_url;
     }
     </script>"""
 
-    # print """
-    # <script type="text/javascript">
-    #     var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-    #     document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-    # </script>
-    # <script type="text/javascript">
-    #     var pageTracker = _gat._getTracker("UA-3650019-1");
-    #     pageTracker._initData();
-    #     pageTracker._trackPageview();
-    # </script>"""
+    print """
+    <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+        var pageTracker = _gat._getTracker("UA-3650019-1");
+        pageTracker._initData();
+        pageTracker._trackPageview();
+    </script>"""
     print """
 </body>
 </html>"""
